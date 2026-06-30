@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STS Survey Flyers — Cow's Got Your Tongue?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ==========================================================================
+     FT-inspired styling, matched to the Cow's Got Your Tongue? blog post.
+     ========================================================================== */
+  :root {
+    --ft-pink:   #FFF1E5;   /* signature FT background tint        */
+    --ft-ink:    #262A33;   /* primary text                       */
+    --ft-slate:  #5A6872;   /* secondary text, subtitles          */
+    --ft-blue:   #0F5499;   /* FT signature blue (links, accents) */
+    --ft-claret: #990F3D;   /* highlight                          */
+    --ft-grid:   #CCC1B7;   /* soft beige rule and gridline color */
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--ft-pink);
+    color: var(--ft-ink);
+    max-width: 760px;
+    margin: 2em auto;
+    padding: 0 1em;
+    line-height: 1.55;
+    font-size: 17px;
+  }
+
+  h1, h2 {
+    font-family: 'Source Serif Pro', Georgia, serif;
+    font-weight: 700;
+    color: var(--ft-ink);
+    letter-spacing: -0.01em;
+  }
+
+  a { color: var(--ft-blue); text-decoration: none; border-bottom: 1px solid rgba(15,84,153,0.3); }
+  a:hover { border-bottom-color: var(--ft-blue); }
+
+  /* Banner --------------------------------------------------------------- */
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Intro blurb ---------------------------------------------------------- */
+  .intro {
+    border-top: 2px solid var(--ft-ink);
+    margin-top: 1.2em;
+    padding-top: 1.2em;
+  }
+  .intro h1 {
+    font-size: 2.1em;
+    line-height: 1.1;
+    margin: 0 0 0.4em 0;
+  }
+  .intro p { margin: 0.8em 0; color: var(--ft-slate); }
+
+  /* Gallery section ------------------------------------------------------ */
+  .gallery {
+    border-top: 1px solid var(--ft-grid);
+    margin-top: 2.2em;
+    padding-top: 1.2em;
+  }
+  .gallery h2 { font-size: 1.4em; margin: 0 0 0.2em 0; }
+  .gallery .hint { color: var(--ft-slate); font-size: 0.92em; margin: 0 0 1.2em 0; }
+
+  /* Stage: the large flyer viewer */
+  .stage {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--ft-grid);
+    border-radius: 2px;
+    overflow: hidden;
+    user-select: none;
+  }
+  .stage-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    cursor: pointer;
+  }
+  .stage-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Prev / next arrow buttons */
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 64px;
+    border: none;
+    background: rgba(38, 42, 51, 0.55);
+    color: #fff;
+    font-size: 1.6em;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+    z-index: 2;
+  }
+  .nav-btn:hover { background: var(--ft-blue); }
+  .nav-btn.prev { left: 0; border-radius: 0 4px 4px 0; }
+  .nav-btn.next { right: 0; border-radius: 4px 0 0 4px; }
+
+  /* Counter pill */
+  .counter {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    background: rgba(38, 42, 51, 0.7);
+    color: #fff;
+    font-size: 0.82em;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    z-index: 2;
+  }
+
+  /* Dot indicators */
+  .dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 1em 0 0.4em 0;
+  }
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1px solid var(--ft-slate);
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .dot:hover { background: var(--ft-grid); }
+  .dot.active { background: var(--ft-claret); border-color: var(--ft-claret); }
+
+  footer {
+    border-top: 1px solid var(--ft-grid);
+    margin-top: 2.4em;
+    padding-top: 1em;
+    color: var(--ft-slate);
+    font-size: 0.88em;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .nav-btn { width: 38px; height: 54px; font-size: 1.3em; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Banner ------------------------------------------------------------- -->
+  <header class="banner">
+    <img src="banner.png" alt="Cow's Got Your Tongue?" />
+  </header>
+
+  <!-- Intro blurb -------------------------------------------------------- -->
+  <section class="intro">
+    <h1>STS Survey Flyers</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+       commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+       dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </section>
+
+  <!-- Gallery ------------------------------------------------------------ -->
+  <section class="gallery">
+    <h2>The Flyers</h2>
+    <p class="hint">Tap the flyer or use the arrows (or your &larr; &rarr; keys) to browse.</p>
+
+    <div class="stage">
+      <button class="nav-btn prev" aria-label="Previous flyer">&#8249;</button>
+      <div class="stage-frame" id="frame">
+        <img id="flyer" alt="" />
+      </div>
+      <button class="nav-btn next" aria-label="Next flyer">&#8250;</button>
+      <div class="counter" id="counter"></div>
+    </div>
+
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <footer>
+    Cow's Got Your Tongue? &mdash; STS Survey Flyers
+  </footer>
+
+  <script>
+    // Flyer files in display order (note: there is no "2.svg").
+    const flyers = [
+      "flyers/1.svg",
+      "flyers/3.svg",
+      "flyers/4.svg",
+      "flyers/5.svg",
+      "flyers/6.svg",
+      "flyers/7.svg",
+      "flyers/8.svg",
+      "flyers/9.svg",
+      "flyers/10.svg",
+      "flyers/11.svg"
+    ];
+
+    const img      = document.getElementById("flyer");
+    const counter  = document.getElementById("counter");
+    const dotsWrap = document.getElementById("dots");
+    let current = 0;
+
+    // Build dot indicators
+    flyers.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "dot";
+      d.setAttribute("aria-label", "Go to flyer " + (i + 1));
+      d.addEventListener("click", () => show(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function show(i) {
+      current = (i + flyers.length) % flyers.length;
+      img.src = flyers[current];
+      img.alt = "Flyer " + (current + 1) + " of " + flyers.length;
+      counter.textContent = (current + 1) + " / " + flyers.length;
+      dots.forEach((d, j) => d.classList.toggle("active", j === current));
+    }
+
+    const next = () => show(current + 1);
+    const prev = () => show(current - 1);
+
+    document.querySelector(".nav-btn.next").addEventListener("click", next);
+    document.querySelector(".nav-btn.prev").addEventListener("click", prev);
+    // Tapping the flyer advances to the next one.
+    document.getElementById("frame").addEventListener("click", next);
+
+    // Keyboard arrows
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft")  prev();
+    });
+
+    // Touch swipe
+    let startX = null;
+    const stage = document.querySelector(".stage");
+    stage.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+      startX = null;
+    }, { passive: true });
+
+    show(0);
+  </script>
+</body>
+</html>
