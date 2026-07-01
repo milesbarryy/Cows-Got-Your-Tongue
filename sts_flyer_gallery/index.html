@@ -44,6 +44,15 @@
   a:hover { border-bottom-color: var(--ft-blue); }
 
   /* Banner --------------------------------------------------------------- */
+  .banner .site-title {
+    font-family: 'Source Serif Pro', Georgia, serif;
+    font-weight: 700;
+    font-size: 2.4em;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ft-ink);
+    margin: 0 0 0.4em 0;
+  }
   .banner img {
     width: 100%;
     height: auto;
@@ -170,7 +179,8 @@
 
   <!-- Banner ------------------------------------------------------------- -->
   <header class="banner">
-    <img src="banner.png" alt="Cow's Got Your Tongue?" />
+    <h1 class="site-title">Cow's Got Your Tongue?</h1>
+    <img src="banner.png" alt="Cow's Got Your Tongue? logo" />
   </header>
 
   <!-- Intro blurb -------------------------------------------------------- -->
@@ -211,6 +221,7 @@
     // Flyer files in display order (note: there is no "2.svg").
     const flyers = [
       "flyers/1.svg",
+      "flyers/11.svg",
       "flyers/3.svg",
       "flyers/4.svg",
       "flyers/5.svg",
@@ -218,8 +229,7 @@
       "flyers/7.svg",
       "flyers/8.svg",
       "flyers/9.svg",
-      "flyers/10.svg",
-      "flyers/11.svg"
+      "flyers/10.svg"
     ];
 
     const img      = document.getElementById("flyer");
